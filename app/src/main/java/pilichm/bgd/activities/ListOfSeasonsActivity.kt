@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import pilichm.bgd.R
 import pilichm.bgd.ShowSeries
 import pilichm.bgd.utils.MongoDAO
@@ -27,7 +28,6 @@ class ListOfSeasonsActivity : AppCompatActivity() {
     }
 
     fun onBackgroundTaskDataObtained(results: List<ShowSeries>) {
-        val rvSeries = findViewById<View>(R.id.rvSeasons) as RecyclerView
         val adapter = SeriesAdapter(results)
 
         /**
@@ -43,8 +43,8 @@ class ListOfSeasonsActivity : AppCompatActivity() {
             }
         })
 
-        rvSeries.adapter = adapter
-        rvSeries.layoutManager = LinearLayoutManager(this)
+        rvSeasons.adapter = adapter
+        rvSeasons.layoutManager = LinearLayoutManager(this)
     }
 
     /**

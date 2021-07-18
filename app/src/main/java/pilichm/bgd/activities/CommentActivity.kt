@@ -11,8 +11,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_comment.*
 import pilichm.bgd.Comment
 import pilichm.bgd.R
 import pilichm.bgd.utils.CommentsAdapter
@@ -45,8 +45,6 @@ class CommentActivity : AppCompatActivity() {
      * Displays list of comments for given episode of season.
      * */
     fun onAllCommentsRetrieved(comments: List<Comment>) {
-        val rvComment = findViewById<View>(R.id.rvComments) as RecyclerView
-
         /**
          * On call prepares everything.
          * */
@@ -80,8 +78,8 @@ class CommentActivity : AppCompatActivity() {
                 }
             })
 
-            rvComment.adapter = adapter
-            rvComment.layoutManager = LinearLayoutManager(this)
+            rvComments.adapter = adapter
+            rvComments.layoutManager = LinearLayoutManager(this)
 
             val fab = findViewById<View>(R.id.add_comment_button) as FloatingActionButton
 
@@ -115,8 +113,8 @@ class CommentActivity : AppCompatActivity() {
              * On later calls only  reloads and updates list displayed comments.
              * */
         } else {
-            rvComment.swapAdapter(CommentsAdapter(comments), false)
-            rvComment.adapter?.notifyDataSetChanged()
+            rvComments.swapAdapter(CommentsAdapter(comments), false)
+            rvComments.adapter?.notifyDataSetChanged()
         }
     }
 

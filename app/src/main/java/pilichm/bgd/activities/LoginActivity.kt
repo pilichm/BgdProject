@@ -4,14 +4,12 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.snappydb.DB
 import com.snappydb.DBFactory
 import com.snappydb.SnappydbException
+import kotlinx.android.synthetic.main.activity_login.*
 import pilichm.bgd.R
 
 
@@ -20,13 +18,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val mUserName = findViewById<View>(R.id.txtUserName) as EditText
-        val mPasswordView = findViewById<View>(R.id.txtPassword) as EditText
-        val btnLogin = findViewById<View>(R.id.btnLogin) as Button
-
-        btnLogin.setOnClickListener {
-            val userName = mUserName.text.toString()
-            val password = mPasswordView.text.toString()
+            btnLogin.setOnClickListener {
+            val userName = txtUserName.text.toString()
+            val password = txtPassword.text.toString()
 
             when (checkUser(userName, password)) {
                 0 -> {

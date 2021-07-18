@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_list_of_episodes.*
 import pilichm.bgd.Episode
 import pilichm.bgd.R
 import pilichm.bgd.utils.EpisodesAdapter
@@ -30,7 +30,6 @@ class ListOfEpisodesActivity : AppCompatActivity() {
     }
 
     fun onBackgroundTaskDataObtained(episodes: List<Episode>) {
-        val rvEpisodes = findViewById<View>(R.id.rvEpisodes) as RecyclerView
         val adapter = EpisodesAdapter(episodes)
 
         /**
