@@ -7,21 +7,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
-import pilichm.bgd.R
 import pilichm.bgd.ShowSeries
+import pilichm.bgd.databinding.ActivityMainBinding
 import pilichm.bgd.utils.MongoDAO
 import pilichm.bgd.utils.SeriesAdapter
 import pilichm.bgd.utils.SeriesAdapter.OnItemClickListener
 import pilichm.bgd.utils.Utils
 
 class ListOfSeasonsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private var userName = "anonimowy"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         userName = intent.getStringExtra("userName") as String
         RetrieveAllSeasonsTask().execute()
@@ -43,8 +43,8 @@ class ListOfSeasonsActivity : AppCompatActivity() {
             }
         })
 
-        rvSeasons.adapter = adapter
-        rvSeasons.layoutManager = LinearLayoutManager(this)
+        binding.rvSeasons.adapter = adapter
+        binding.rvSeasons.layoutManager = LinearLayoutManager(this)
     }
 
     /**

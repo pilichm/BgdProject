@@ -7,9 +7,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_list_of_episodes.*
 import pilichm.bgd.Episode
-import pilichm.bgd.R
+import pilichm.bgd.databinding.ActivityListOfEpisodesBinding
 import pilichm.bgd.utils.EpisodesAdapter
 import pilichm.bgd.utils.MongoDAO
 import pilichm.bgd.utils.SeriesAdapter
@@ -17,12 +16,14 @@ import pilichm.bgd.utils.Utils
 
 
 class ListOfEpisodesActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityListOfEpisodesBinding
     private var seasonNumber = 0
     private var userName = "anonimowy"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_of_episodes)
+        binding = ActivityListOfEpisodesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         userName = intent.getStringExtra("userName") as String
         seasonNumber = intent.getIntExtra("season_number", 10)
@@ -47,8 +48,8 @@ class ListOfEpisodesActivity : AppCompatActivity() {
             }
         })
 
-        rvEpisodes.adapter = adapter
-        rvEpisodes.layoutManager = LinearLayoutManager(this)
+        binding.rvEpisodes.adapter = adapter
+        binding.rvEpisodes.layoutManager = LinearLayoutManager(this)
     }
 
     /**

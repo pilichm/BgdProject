@@ -9,18 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.snappydb.DB
 import com.snappydb.DBFactory
 import com.snappydb.SnappydbException
-import kotlinx.android.synthetic.main.activity_login.*
 import pilichm.bgd.R
+import pilichm.bgd.databinding.ActivityLoginBinding
 
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            btnLogin.setOnClickListener {
-            val userName = txtUserName.text.toString()
-            val password = txtPassword.text.toString()
+            binding.btnLogin.setOnClickListener {
+            val userName = binding.txtUserName.text.toString()
+            val password = binding.txtPassword.text.toString()
 
             when (checkUser(userName, password)) {
                 0 -> {

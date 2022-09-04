@@ -12,13 +12,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_comment.*
 import pilichm.bgd.Comment
 import pilichm.bgd.R
+import pilichm.bgd.databinding.ActivityCommentBinding
 import pilichm.bgd.utils.CommentsAdapter
 import pilichm.bgd.utils.MongoDAO
 
 class CommentActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCommentBinding
     var episodeNumber = 0
     var seasonNumber = 0
     private var isRecyclerViewSet = false
@@ -26,7 +27,8 @@ class CommentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comment)
+        binding = ActivityCommentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         userName = intent.getStringExtra("userName") as String
         episodeNumber = intent.getIntExtra("episode_number", 10)
@@ -78,8 +80,8 @@ class CommentActivity : AppCompatActivity() {
                 }
             })
 
-            rvComments.adapter = adapter
-            rvComments.layoutManager = LinearLayoutManager(this)
+            binding.rvComments.adapter = adapter
+            binding.rvComments.layoutManager = LinearLayoutManager(this)
 
             val fab = findViewById<View>(R.id.add_comment_button) as FloatingActionButton
 
@@ -113,8 +115,8 @@ class CommentActivity : AppCompatActivity() {
              * On later calls only  reloads and updates list displayed comments.
              * */
         } else {
-            rvComments.swapAdapter(CommentsAdapter(comments), false)
-            rvComments.adapter?.notifyDataSetChanged()
+            binding.rvComments.swapAdapter(CommentsAdapter(comments), false)
+            binding.rvComments.adapter?.notifyDataSetChanged()
         }
     }
 
