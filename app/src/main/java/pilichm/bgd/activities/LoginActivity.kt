@@ -51,8 +51,13 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Account created!", Toast.LENGTH_LONG).show()
                         openListOfSeasonsActivity(userName)
                     } else {
-                        Toast.makeText(this@LoginActivity, "Error creating account!", Toast.LENGTH_LONG).show()
-                    }
+
+                        if (userName.isNullOrEmpty()||password.isNullOrEmpty()) {
+                            Toast.makeText(this@LoginActivity, "Empty username or password!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this@LoginActivity, "Error creating account!", Toast.LENGTH_LONG).show()
+                        }
+                        }
                     }
                     builder.setNegativeButton(
                         "Cancel"
