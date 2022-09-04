@@ -36,12 +36,6 @@ class LoginActivity : AppCompatActivity() {
                     /**
                      * If user doesn't exist ask him if he wants to create account.
                      */
-                    /**
-                     * If user doesn't exist ask him if he wants to create account.
-                     */
-                    /**
-                     * If user doesn't exist ask him if he wants to create account.
-                     */
                     val builder: AlertDialog.Builder = AlertDialog.Builder(this@LoginActivity)
                     builder.setTitle("Create account?")
 
